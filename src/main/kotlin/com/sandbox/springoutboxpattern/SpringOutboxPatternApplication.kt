@@ -1,4 +1,4 @@
-package com.sadybox.springoutboxpattern
+package com.sandbox.springoutboxpattern
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

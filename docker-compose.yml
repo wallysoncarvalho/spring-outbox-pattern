@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:12-alpine
+    container_name: sop_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=sop_db
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U postgres -d sop_db'" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  artemis:
+    image: quay.io/artemiscloud/activemq-artemis-broker:latest
+    container_name: activemq-artemis_sop
+    environment:
+      AMQ_USER: ademir
+      AMQ_PASSWORD: ademir
+      AMQ_EXTRA_ARGS: "--host 0.0.0.0 --http-host 0.0.0.0 --relax-jolokia"
+    ports:
+      - "8161:8161"
+      - "61616:61616"

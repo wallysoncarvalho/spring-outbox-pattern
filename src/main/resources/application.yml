@@ -1,1 +1,91 @@
+info:
+  application:
+    name: '@project.name@'
+    description: '@project.description@'
+    version: '@project.version@'
 
+server:
+  port: 8080
+  shutdown: graceful
+  forward-headers-strategy: framework
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  artemis:
+    broker-url: tcp://localhost:61616
+    user: ademir
+    password: ademir
+    embedded:
+      enabled: false
+
+  main:
+    banner-mode: off
+
+  application:
+    name: sop
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/sop_db
+    username: postgres
+    password: postgres
+    hikari:
+      pool-name: my_cool_and_expensive_pool
+      maximum-pool-size: 2
+    driver-class-name: org.postgresql.Driver
+
+  flyway:
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    schemas: public
+    default-schema: public
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          time_zone: UTC
+    open-in-view: false
+
+  web:
+    resources:
+      add-mappings: false
+
+  quartz:
+    job-store-type: memory
+    wait-for-jobs-to-complete-on-shutdown: true
+    overwrite-existing-jobs: false
+    properties:
+      org.quartz.threadPool.threadCount: 1
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: "health"
+  endpoint:
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+      probes:
+        enabled: true
+  server:
+    port: 8081
+  newrelic:
+    metrics:
+      export:
+        enabled: true
+
+logging:
+  level:
+    com:
+      sandbox:
+        springoutboxpattern: ${LOG_LEVEL:DEBUG}
