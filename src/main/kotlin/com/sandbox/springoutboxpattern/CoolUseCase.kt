@@ -2,6 +2,7 @@ package com.sandbox.springoutboxpattern
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.web.client.RestTemplate
 import java.time.Instant
 import kotlin.random.Random
 

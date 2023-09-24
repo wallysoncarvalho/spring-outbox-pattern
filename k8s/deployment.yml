@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Deployment # could be the same for ReplicaSet
+metadata:
+  name: asdsa-replicaset
+spec:
+  selector:
+    matchLabels:
+      app: asdas
+    template:
+      metadata:
+        name: sdas
+        labels:
+          name: aaaa
+      spec:
+        containers:
+          - name: wqeqw
+            image: asdsad
+            ports:
+              - containerPort: 80

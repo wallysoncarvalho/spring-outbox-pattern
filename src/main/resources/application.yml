@@ -57,14 +57,10 @@ spring:
     resources:
       add-mappings: false
 
-  quartz:
-    job-store-type: memory
-    wait-for-jobs-to-complete-on-shutdown: true
-    overwrite-existing-jobs: false
-    properties:
-      org.quartz.threadPool.threadCount: 1
-
 management:
+  tracing:
+    sampling:
+      probability: 1.0
   endpoints:
     web:
       base-path: /
@@ -78,11 +74,10 @@ management:
       probes:
         enabled: true
   server:
-    port: 8081
-  newrelic:
-    metrics:
-      export:
-        enabled: true
+    port: 8080
+
+tracing:
+  url: http://localhost:4318/v1/traces
 
 logging:
   level:

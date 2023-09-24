@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sdas
+  labels:
+    name: aaaa
+spec:
+  containers:
+    - name: wqeqw
+      image: asdsad
+      ports:
+        - containerPort: 80

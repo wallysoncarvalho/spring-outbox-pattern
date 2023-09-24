@@ -34,6 +34,8 @@ dependencies {
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("io.github.oshai:kotlin-logging-jvm:5.1.0")
+	implementation("io.micrometer:micrometer-tracing-bridge-otel")
+	implementation("io.opentelemetry:opentelemetry-exporter-otlp")
 
 	implementation("org.springframework.boot:spring-boot-starter-artemis")
 
