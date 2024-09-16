@@ -12,4 +12,4 @@ jobs:
   pact-verification:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Running Pact Verification for $CONSUMER_TO_VERIFY"
+      - run: echo "Running Pact Verification for ${CONSUMER_TO_VERIFY}"
