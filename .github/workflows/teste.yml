@@ -6,7 +6,7 @@ on:
       - provider_verification
 
 env:
-  CONSUMER_TO_VERIFY: ${{ github.event.consumer }}
+  CONSUMER_TO_VERIFY: ${{ github.event.client_payload.consumer }}
 
 jobs:
   pact-verification:
