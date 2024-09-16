@@ -1,0 +1,15 @@
+name: Pact Verification Webhook
+
+on:
+  repository_dispatch:
+    types:
+      - provider_verification
+
+env:
+  CONSUMER_TO_VERIFY: ${{ github.event.consumer }}
+
+jobs:
+  pact-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running Pact Verification for $CONSUMER_TO_VERIFY"
